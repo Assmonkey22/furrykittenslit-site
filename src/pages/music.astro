@@ -1,0 +1,404 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="furrykittenslit - Music">
+  <div class="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-pink-50">
+    <div class="container mx-auto px-4 py-16">
+      <h1 class="text-4xl md:text-6xl font-bold text-center mb-4 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+        Music
+      </h1>
+      
+
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+          Album: Glittery Jizz Bubbles
+        </h2>
+       
+        <!-- Custom Music Player -->
+<div id="music-player" style="background: #000000 !important; border-radius: 1rem; padding: 2rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); margin-bottom: 3rem;">
+  
+    <!-- Album Art and Title Section -->
+    <div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+      <!-- Album Art -->
+      <div style="flex-shrink: 0;">
+        <img 
+          src="https://i.scdn.co/image/ab67616d0000b2737a9d030bdecfe2b167d526a5" 
+          alt="Glittery Jizz Bubbles Album Cover"
+          style="width: 200px; height: 200px; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);"
+        />
+      </div>
+      
+      <!-- Title and Album Info -->
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+        <h3 id="current-track-title" style="color: #e5e7eb; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">
+          C₄H₈O₃ (Scoop)
+        </h3>
+        <p style="color: #9ca3af; font-size: 1rem; font-weight: 600;">
+          Album: Glittery Jizz Bubbles
+        </p>
+      </div>
+    </div>
+  
+    <!-- Track List -->
+    <div id="track-list" style="margin-bottom: 1.5rem; background: transparent !important;">
+      <!-- Tracks will be inserted here -->
+    </div>
+  
+    <!-- Controls -->
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+      <button id="prev-btn" style="background: rgba(236, 72, 153, 0.1); color: #ec4899; padding: 0.75rem; border-radius: 9999px; border: none; cursor: pointer; transition: all 0.2s;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="19 20 9 12 19 4 19 20"></polygon>
+          <line x1="5" y1="19" x2="5" y2="5"></line>
+        </svg>
+      </button>
+      
+      <button id="play-pause-btn" style="background: linear-gradient(135deg, #ec4899, #8b5cf6); color: white; padding: 1rem; border-radius: 9999px; border: none; cursor: pointer; transition: all 0.2s;">
+        <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <svg id="pause-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2">
+          <rect x="6" y="4" width="4" height="16"></rect>
+          <rect x="14" y="4" width="4" height="16"></rect>
+        </svg>
+      </button>
+      
+      <button id="next-btn" style="background: rgba(236, 72, 153, 0.1); color: #ec4899; padding: 0.75rem; border-radius: 9999px; border: none; cursor: pointer; transition: all 0.2s;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="5 4 15 12 5 20 5 4"></polygon>
+          <line x1="19" y1="5" x2="19" y2="19"></line>
+        </svg>
+      </button>
+      
+      <button id="shuffle-btn" style="background: rgba(236, 72, 153, 0.1); color: #9ca3af; padding: 0.75rem; border-radius: 9999px; border: none; cursor: pointer; transition: all 0.2s;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="16 3 21 3 21 8"></polyline>
+          <line x1="4" y1="20" x2="21" y2="3"></line>
+          <polyline points="21 16 21 21 16 21"></polyline>
+          <line x1="15" y1="15" x2="21" y2="21"></line>
+          <line x1="4" y1="4" x2="9" y2="9"></line>
+        </svg>
+      </button>
+      
+      <button id="repeat-btn" style="background: rgba(236, 72, 153, 0.1); color: #9ca3af; padding: 0.75rem; border-radius: 9999px; border: none; cursor: pointer; transition: all 0.2s;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="17 1 21 5 17 9"></polyline>
+          <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+          <polyline points="7 23 3 19 7 15"></polyline>
+          <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- Progress Bar -->
+    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+      <span id="current-time" style="color: #9ca3af; font-size: 0.875rem; min-width: 45px; text-align: right;">0:00</span>
+      <input 
+        type="range" 
+        id="progress-bar" 
+        min="0" 
+        max="100" 
+        value="0"
+        style="flex: 1; height: 6px; border-radius: 9999px; background: rgba(236, 72, 153, 0.2); outline: none; cursor: pointer; -webkit-appearance: none; appearance: none;"
+      />
+      <span id="duration" style="color: #9ca3af; font-size: 0.875rem; min-width: 45px;">0:00</span>
+    </div>
+  
+    <!-- Volume and Speed -->
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem; flex: 1;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+        <input 
+          type="range" 
+          id="volume-slider" 
+          min="0" 
+          max="100" 
+          value="70"
+          style="flex: 1; height: 6px; border-radius: 9999px; background: rgba(236, 72, 153, 0.2); outline: none; cursor: pointer; -webkit-appearance: none; appearance: none;"
+        />
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span style="color: #9ca3af; font-size: 0.875rem;">Speed:</span>
+        <select 
+          id="speed-control"
+          style="background: rgba(236, 72, 153, 0.1); color: #ec4899; border: 1px solid rgba(236, 72, 153, 0.3); border-radius: 0.5rem; padding: 0.25rem 0.5rem; cursor: pointer; font-size: 0.875rem;"
+        >
+          <option value="0.5">0.5x</option>
+          <option value="0.75">0.75x</option>
+          <option value="1" selected>1x</option>
+          <option value="1.25">1.25x</option>
+          <option value="1.5">1.5x</option>
+          <option value="2">2x</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+
+        <!-- Spotify Embed -->
+        <div class="mt-12">
+          <iframe 
+            style="border-radius:12px" 
+            src="https://open.spotify.com/embed/album/57mNlJBOxNJElCilOjn7yh?utm_source=generator&theme=0" 
+            width="100%" 
+            height="352" 
+            frameBorder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+<style>
+    /* Custom range slider styling */
+    #progress-bar::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  
+    #progress-bar::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  
+    #volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ec4899;
+      cursor: pointer;
+    }
+  
+    #volume-slider::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ec4899;
+      cursor: pointer;
+      border: none;
+    }
+  
+    button:hover {
+      transform: scale(1.05);
+    }
+  
+    button:active {
+      transform: scale(0.95);
+    }
+  </style>
+  <script>
+ const tracks = [
+  { title: "C₄H₈O₃ (Scoop)", duration: 289, file: "/audio/album/C₄H₈O₃ (Scoop).mp3" },
+  { title: "Dagen", duration: 204, file: "/audio/album/Degen (2).wav" },
+  { title: "Hookers and Blow", duration: 165, file: "/audio/album/Hookers and Blow (3).wav" },
+  { title: "Minneapolis Girl", duration: 386, file: "/audio/album/Minneapolis_Girl.mp3" },
+  { title: "Gotta Let it Out", duration: 333, file: "/audio/album/Gotta Let It Out (2).wav" },
+  { title: "Ride or Die", duration: 314, file: "/audio/album/Ride or Die.wav" },
+  { title: "Throw It All Away", duration: 313, file: "/audio/album/Throw It All Away (1).wav" },
+  { title: "Calling Birds", duration: 244, file: "/audio/album/celing.birds 1_mixdown.wav" }
+];
+  
+    let currentTrackIndex = 0;
+    let isPlaying = false;
+    let isShuffleOn = false;
+    let repeatMode = 'off';
+    const audio = new Audio();
+  
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+  
+    function renderTracks() {
+      const trackList = document.getElementById('track-list');
+      if (!trackList) return;
+      
+      trackList.innerHTML = tracks.map((track, index) => `
+        <div 
+          class="track-item" 
+          data-index="${index}"
+          style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-radius: 0.5rem; cursor: pointer; transition: all 0.2s; background: ${index === currentTrackIndex ? 'rgba(236, 72, 153, 0.2)' : 'transparent'}; margin-bottom: 0.5rem;"
+        >
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <span style="color: ${index === currentTrackIndex ? '#ec4899' : '#9ca3af'}; font-weight: ${index === currentTrackIndex ? 'bold' : 'normal'}; min-width: 1.5rem;">${index + 1}.</span>
+            <span style="color: ${index === currentTrackIndex ? '#ec4899' : '#e5e7eb'}; font-weight: ${index === currentTrackIndex ? '600' : 'normal'};">${track.title}</span>
+          </div>
+          <span style="color: #9ca3af; font-size: 0.875rem;">${formatTime(track.duration)}</span>
+        </div>
+      `).join('');
+  
+      document.querySelectorAll('.track-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const index = parseInt(item.dataset.index);
+          playTrack(index);
+        });
+        
+        item.addEventListener('mouseenter', (e) => {
+          if (parseInt(e.currentTarget.dataset.index) !== currentTrackIndex) {
+            e.currentTarget.style.background = 'rgba(236, 72, 153, 0.1)';
+          }
+        });
+        
+        item.addEventListener('mouseleave', (e) => {
+          if (parseInt(e.currentTarget.dataset.index) !== currentTrackIndex) {
+            e.currentTarget.style.background = 'transparent';
+          }
+        });
+      });
+    }
+  
+    function updateCurrentTitle() {
+  const titleElement = document.getElementById('current-track-title');
+  if (titleElement) {
+    titleElement.textContent = tracks[currentTrackIndex].title;
+  }
+}
+
+function playTrack(index) {
+  currentTrackIndex = index;
+  audio.src = tracks[index].file;
+  audio.play();
+  isPlaying = true;
+  updatePlayPauseButton();
+  updateCurrentTitle();  // This line is important!
+  renderTracks();
+}
+  
+    function updatePlayPauseButton() {
+      const playIcon = document.getElementById('play-icon');
+      const pauseIcon = document.getElementById('pause-icon');
+      if (playIcon && pauseIcon) {
+        playIcon.style.display = isPlaying ? 'none' : 'block';
+        pauseIcon.style.display = isPlaying ? 'block' : 'none';
+      }
+    }
+  
+    document.getElementById('play-pause-btn')?.addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+      } else {
+        if (!audio.src) {
+          playTrack(0);
+        } else {
+          audio.play();
+          isPlaying = true;
+        }
+      }
+      updatePlayPauseButton();
+    });
+  
+    document.getElementById('next-btn')?.addEventListener('click', () => {
+  let nextIndex = currentTrackIndex + 1;
+  if (nextIndex >= tracks.length) {
+    nextIndex = 0;
+  }
+  playTrack(nextIndex);  // This will call updateCurrentTitle()
+});
+
+document.getElementById('prev-btn')?.addEventListener('click', () => {
+  let prevIndex = currentTrackIndex - 1;
+  if (prevIndex < 0) {
+    prevIndex = tracks.length - 1;
+  }
+  playTrack(prevIndex);  // This will call updateCurrentTitle()
+});
+  
+    document.getElementById('shuffle-btn')?.addEventListener('click', (e) => {
+      isShuffleOn = !isShuffleOn;
+      e.currentTarget.style.color = isShuffleOn ? '#ec4899' : '#9ca3af';
+    });
+  
+    document.getElementById('repeat-btn')?.addEventListener('click', (e) => {
+      const modes = ['off', 'all', 'one'];
+      const currentIndex = modes.indexOf(repeatMode);
+      repeatMode = modes[(currentIndex + 1) % modes.length];
+      
+      if (repeatMode === 'off') {
+        e.currentTarget.style.color = '#9ca3af';
+      } else {
+        e.currentTarget.style.color = '#ec4899';
+      }
+    });
+  
+    audio.addEventListener('timeupdate', () => {
+      const progressBar = document.getElementById('progress-bar');
+      const currentTimeEl = document.getElementById('current-time');
+      const durationEl = document.getElementById('duration');
+      
+      if (progressBar && currentTimeEl && durationEl && audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.value = progress.toString();
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+        durationEl.textContent = formatTime(audio.duration);
+      }
+    });
+  
+    audio.addEventListener('ended', () => {
+  if (repeatMode === 'one') {
+    audio.currentTime = 0;
+    audio.play();
+  } else {
+    let nextIndex;
+    if (isShuffleOn) {
+      nextIndex = Math.floor(Math.random() * tracks.length);
+    } else {
+      nextIndex = currentTrackIndex + 1;
+    }
+    
+    if (nextIndex >= tracks.length) {
+      if (repeatMode === 'all') {
+        nextIndex = 0;
+      } else {
+        isPlaying = false;
+        updatePlayPauseButton();
+        return;
+      }
+    }
+    playTrack(nextIndex);  // This will call updateCurrentTitle()
+  }
+});
+  
+    document.getElementById('progress-bar')?.addEventListener('input', (e) => {
+      const target = e.target as HTMLInputElement;
+      const time = (parseFloat(target.value) / 100) * audio.duration;
+      audio.currentTime = time;
+    });
+  
+    document.getElementById('volume-slider')?.addEventListener('input', (e) => {
+      const target = e.target as HTMLInputElement;
+      audio.volume = parseFloat(target.value) / 100;
+    });
+  
+    document.getElementById('speed-control')?.addEventListener('change', (e) => {
+      const target = e.target as HTMLSelectElement;
+      audio.playbackRate = parseFloat(target.value);
+    });
+  
+    audio.volume = 0.7;
+    renderTracks();
+  </script>
+  

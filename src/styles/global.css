@@ -1,0 +1,255 @@
+@import "tailwindcss";
+/* ===== MUSIC PLAYER STYLING - DARK THEME TO MATCH SPOTIFY ===== */
+
+/* Main player container */
+.music-player-container {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin: 2rem auto;
+  }
+  
+  /* Album art styling */
+  #album-art {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+    margin: 0 auto 1.5rem;
+    display: block;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Current track display */
+  #current-track {
+    text-align: center;
+    color: #ec4899;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  /* Track list styling - dark background */
+  #track-list {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+  
+  #track-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.875rem 1.25rem;
+    color: #e5e5e5;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 0.25rem;
+  }
+  
+  #track-list li:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Active/playing track - pink gradient */
+  #track-list li.playing,
+  #track-list li.active {
+    background: linear-gradient(90deg, #ec4899 0%, #a855f7 100%);
+    color: white;
+    font-weight: 600;
+  }
+  
+  /* Track number and title */
+  #track-list li span:first-child {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  /* Track duration */
+  #track-list li span:last-child {
+    color: #9ca3af;
+    font-size: 0.875rem;
+  }
+  
+  #track-list li.playing span:last-child {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* Player controls container */
+  .player-controls {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0 1rem;
+  }
+  
+  .player-controls button {
+    background: none;
+    border: none;
+    color: #ec4899;
+    cursor: pointer;
+    font-size: 1.75rem;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .player-controls button:hover {
+    transform: scale(1.15);
+    color: #f472b6;
+  }
+  
+  .player-controls button:active {
+    transform: scale(0.95);
+  }
+  
+  /* Play/pause button - larger */
+  #play-pause-btn {
+    font-size: 2.5rem;
+  }
+  
+  /* Volume and speed controls row */
+  .controls-row {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Volume slider */
+  #volume-slider {
+    width: 120px;
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  #volume-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #ec4899;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  #volume-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: #ec4899;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Speed selector */
+  #speed-select {
+    background: #2a2a2a;
+    color: #e5e5e5;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  #speed-select:hover {
+    border-color: #ec4899;
+  }
+  
+  /* Progress bar container */
+  #progress-bar {
+    width: calc(100% - 2rem);
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    margin: 1rem 1rem 0.5rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Progress fill */
+  #progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ec4899 0%, #a855f7 100%);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+  
+  /* Time display container - FIX FOR PADDING */
+  .time-display {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1.5rem 0.75rem 1.5rem; /* Added horizontal padding */
+    color: #9ca3af;
+    font-size: 0.875rem;
+  }
+  
+  #current-time,
+  #duration {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Volume icon */
+  .controls-row svg,
+  .controls-row img {
+    color: #9ca3af;
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Speed label */
+  .controls-row label {
+    color: #9ca3af;
+    font-size: 0.875rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .music-player-container {
+      padding: 1rem;
+    }
+    
+    .player-controls {
+      gap: 1rem;
+    }
+    
+    .player-controls button {
+      font-size: 1.5rem;
+    }
+    
+    #play-pause-btn {
+      font-size: 2rem;
+    }
+    
+    .controls-row {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    #volume-slider {
+      width: 100px;
+    }
+    
+    .time-display {
+      padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+  }
+  
